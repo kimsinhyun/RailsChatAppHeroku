@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'pages#home'
+
+  resources :rooms
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -8,4 +10,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'users', to: 'users#index'
   end
+
+  get 'user/:id', to: 'users#show', as: 'user'
 end
