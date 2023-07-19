@@ -1,0 +1,8 @@
+<h1>TurboChat</h1>
+<% if current_user %>
+  <%= link_to "Start Chatting", "#" %>
+  <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= button_to "Login", new_user_session_path %>
+  <%= button_to "Signup", new_user_registration_path %>
+<% end %>
