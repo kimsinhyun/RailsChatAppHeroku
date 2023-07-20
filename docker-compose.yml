@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  sidekiq:
+    depends_on:
+      - redis
+    build: .
+    volumes:
+      - .:/myapp
+    environment:
+      - REDIS_URL=redis://localhost:6379/0
+    command: bundle exec sidekiq
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis:/data
+
+volumes:
+  redis:
